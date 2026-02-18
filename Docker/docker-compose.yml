@@ -1,0 +1,19 @@
+services:
+
+  student-app:
+    build:
+      context: ..
+      dockerfile: Docker/Dockerfile
+    container_name: student-app
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/studentdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+volumes:
+  mysql_data:
